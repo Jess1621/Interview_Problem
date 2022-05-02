@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to HTML</title>
+
+    <style>
+        table, tr {
+            padding: 0px;
+            border: 0px solid;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h2>JSON To HTML</h2>
+    <p id="json_to_html" style="font-size: 15px; font-weight: bold;"></p>
+
+    <script>
+        //Below are the steps that I would take to solve this problem
+        /*
+        Overall steps I would take to solve the problem.
+
+        1. Pass in the url with the JSON data into a variable
+        2. Pass in the JSON data into an array using JSON.parse()
+        3. Make a for loop to iterate through the parsed JSON to print out each element and it's field. I would print out the data into html tables.
+        */
+
+        /*
+        Psuedo Code
+        
+        let url = 'insert url here';
+
+        //Use Jquery to get the data from the URL
+        $.getJSON(url, function(data) {
+            //Some code to make sure that the data from the URL gets passed into a variable (named data)
+        });
+
+        //Make sure that the data is in an array
+        let data_array = JSON.parse(data);
+
+        //create a variable to pass the data from the below for loop into. I'm going to pass the data into a table.
+        let text = "<table border='1'>";
+
+        //Make a For loop to iterate through the array and print out each field from each element
+        for (let = 0; i < data_array.length; i++) {
+            text += "<tr><td>" + "Name of Field </td>" + "<td>" + data_array[i].fieldname + "</td></tr>";
+            //Repeat this for each field name in the data. Will need to adjust some code if there are images/maps/nested arrays
+        };
+
+        text += "</table>";
+
+        //pass the data into the html Paragraph tag above
+        document.getElementById("json_to_html").innterHTML = text;
+        */
+
+
+        /*I tried doing a very basic example of trying to go through JSON from the website link that you sent in the email. It's a long way from what I believe is the best way to
+        to do this process but I wanted to show that I have a basic understanding of how JSON works and to print out fields from an element */
+
+        let data = {"language":"en","title":"Beautiful and handy tool","suggestedLocalProductId":[],"isPublished":true,"consText":"So far I'm happy with the tool, no things I don't like.",
+            "easeOfUseRating":5,"customerSupportRating":null,"switchingReasons":null,"@timestamp":"2022-04-29T19:10:22.560Z","overallRating":5,
+            "chosenReasonsCharCount":0,"writtenOn":"2019-04-12 17:24:23 -0400","incentivized":"NominalGift","sourceSite":"Capterra",
+            "translation":{"prosText":null,"consText":null,"title":null,"adviceToOthers":null,"switchingReasons":null,"chosenReasons":null,"generalComments":null},"slug":"Databox",
+            "recommendationRating":9,"adviceToOthers":"","statusName":"Published","switchedProducts":[],"generalComments":"",
+            "prosText":"Easy to setup. They have a great iPhone app so can review all data on my phone. Every morning I receive an email on our business performance which is really helpful. "
+            ,"vendorId":2108264,"@version":"1","functionalityRating":5,"alternativeProducts":[],"completenessScore":0.49000000953674316,"anonymityOn":true,"productId":154024,"chosenReasons":null,
+            "reviewId":"1474410","vendorResponse":{"name":"Databox","date":null,"text":null},"globalReviewId":"Capterra___1474410","productName":"Databox",
+            "reviewer":{"industry":"Internet","frequencyUsedProduct":"Daily","profilePicUrl":null,"timeUsedProduct":"1-2 years","fullName":"Verified Reviewer","companyName":null,
+            "companySize":"1-10 employees","role":["1","2","4","8"],"verifiedLinkedIn":true,"jobTitle":null,"emailAddress":null},"valueForMoneyRating":null};
+
+        let json_to_html_tag = document.getElementById("json_to_html");
+
+        let my_json = JSON.stringify(data);
+        let parsed_obj = JSON.parse(my_json);
+
+        json_to_html_tag.innerHTML = "Converting JSON to HTML <br><br>" + "<table>" + 
+                                    "<tr><td>Language: </td>" + "<td>" + parsed_obj.language + "</td></tr>" + 
+                                    "<tr><td>Title: </td>" + "<td>"+ parsed_obj.title + "</td></tr>" +
+                                    "<tr><td>Local Product ID: </td>" + "<td>" + parsed_obj.suggestedLocalProductId + "</td></tr>" +
+                                    "<tr><td>Cons Text: </td>" + "<td>" + parsed_obj.consText + "</td></tr>" +
+                                    "<tr><td>Vendor ID: </td>" + "<td>" + parsed_obj.vendorId + "</td></tr>" +
+                                    "<tr><td>Is This Published: </td>" + "<td>" + parsed_obj.isPublished + "</td></tr></table>"
+        
+    </script>
+</body>
+</html>
